@@ -1,0 +1,144 @@
+TPS Activity 1:
+
+1. What is cache and why do we need it?
+
+Cache is a hardware of software component that stores data so that future requests for that data are given faster. Buffer between CPU and main memory. We copy parts of the RAM to the cache so the CPU can use the cache. Accessing the main memory without a cache is very time consuming. The reason why its used is because cache shortens data access time, reduces latency, and improves inout/output.
+	
+
+4. Given the block size of a cache is 16B (bytes), how many bits do we need for
+offset? What is the number of bits in offset as a function of block size? Is it
+practical to have a cache of block size = 1 byte?
+
+For the offset: 4 bits
+# of offset bits = log base 2 (blocksize)
+It's not, becuase everytime you are accesing the memory directly, you are accessing more than 1 byte. 
+
+
+5. Given there are 64 blocks in a cache, how many index bits
+do we need? What is the number of bits in index as a function of number of
+blocks?
+
+6 because 2^6 = 64
+# blocks = 64 -> # index bits = 6 = log base 2 (# of blocks or # of rows)
+	
+
+6. Once you know the number of blocks and the block size of a cache, do you
+know the total size of the cache? How?
+
+blocks = 64
+block size = 16 bytes
+total size of cache = blocks * block size = 64 * 16 = 1024
+	
+
+7.  What do we do to the left over bits from the address? 
+	Why are they important?
+	
+They are important because they make up the tag. It's either we have a hit or miss on the cache.  The CPU needs the correct address and to do that, it checks the tag bits. The tag needs to correspond with the correct tag in order for the CPU to  access the correct data. 
+	
+8. Given a memory address of 20 bits (during Intel 8086 era), 128B of cache, and
+	8B block size, answer the following questions:
+	a. How big is this main memory?
+		
+	2^20 bytes = 1 megabyte (MB)
+	
+	b. How many offset bits?
+	
+	# offset bits = log base 2 (# block size) = log base 2 (8) = 3 bits
+	
+	c. How many blocks are there in the cache?
+	
+	# block size = 8B		cache size = 128B
+	cache size = # blocks * block size
+	# blocks = 128B/8B = 16 blocks
+	
+	d. How many index bits?
+	
+	# index bits = log base 2 (blocks) = log base 2 (16) = 4 bits
+	
+	e. How many tag bits?
+	
+	Out of 20 bits for the address, 3 bits are offset and 4 bits are index. 
+	tag = 20 - 3 - 4 = 13 bits
+	
+	
+	f. Draw the layout of the cache: including tags, valid bits, dirty bits, and
+		data blocks.
+		
+		
+	g. What is the number of bits per row of the cache (number of bits being
+		used in a row: tag, valid bit, dirty bits, and data block)?
+		
+	bits per row = 1 + 1 + 13 + 64 = 79 bits
+		
+	1: valid
+	1: dirty
+	13: tag
+	64: 8 bytes = 8 * 8 bits = 64 bits
+		
+Activity 2:
+
+1. What is the disadvantage of a Direct-mapped cache? What kind of 
+   cache miss will it introduce?
+   
+	The size of the cache is very small in comparison to the RAM. 
+	If you miss, you would have to copy it from the RAM repeatedly. 
+	
+	You can only bring only 1 location to your cache. 
+   
+3. Given a cache with 1024 blocks and the associativity is
+	4 (4 blocks per set), how many index bits do we need? What is the 
+	number of bits in index as a function of number of blocks 
+	and associativity?
+	
+	index bits = 8
+	columns in each block =  1024/4 = 256 
+		
+	associativity = N
+		
+	# index bits = log base 2 (# blocks/N) = 8
+	
+4. Given a memory address of 20 bits (during Intel 8086 era), 128B of 2-way
+cache, and 8B block size, answer the following questions:
+	a. How big is this main memory?
+	
+	2^20 bytes = 1 MB
+		
+	2^(# address bits)
+	
+	b. How many offset bits?
+	
+	# offset bits = log base 2 (# block size) = log base 2 (8) = 3 bits
+	
+	c. How many blocks are there in the cache?
+	
+	# blocks = cache size/block size = 128/8 = 16 blocks in each cache. 
+	
+	d. How many sets are there in the cache?
+	
+	# sets = # blocks/N = 16/2 = 8 
+	
+	e. How many index bits?
+	
+	# index bits = log base 2 (sets) = log base 2 (8) = 3
+	
+	f. How many tag bits?
+	
+	20 total bits - 3 index bits - 3 offset bits = 14 tag bits
+	
+	g. Draw the layout of the cache: including tags, valid bits, dirty bits, 
+		and data blocks. Indicate the sets with a different color 
+		(or a thicker) boarder.
+		
+		
+		
+	h. What is the number of bits per row of the cache (number of bits being
+		used in a row: tag, valid bit, dirty bits, and data block)?
+
+
+		bits per row = 1 + 1 + 14 + 64 = 80 bits
+		
+		1: valid
+		1: dirty
+		14: tag
+		64: 8 bytes = 8 * 8 bits = 64 bits
+	

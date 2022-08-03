@@ -1,0 +1,41 @@
+1. How many levels of caches does your CPU have (L1, L2, L3, etc.)? 
+Is there separate L1 cache for data and instructions? 
+
+	There are 3 levels of caches: L1, L2, and L3. L1 has separate caches 
+	for Instructions and data. 
+	
+2. How big is each level of cache? 
+L1 D-Cache = 128 KBytes
+L1 I-Cache = 128 KBytes
+L2 Cache = 1024 KBytes
+L3 Cache = 6 MBytes
+
+3. What is the block size (sometimes it is called line size)? 
+L1 D-Cache = 64 bytes
+L1 I-Cache = 64 bytes
+L2 Cache = 64 bytes
+L3 Cache = 64 bytes
+	
+4. Are the caches direct-mapped or set associative? 
+If set associative, how many ways? 
+	
+All are set associative.
+	
+L1 D-Cache = 8 way
+L1 I-Cache = 8 way
+L2 Cache = 4 way
+L3 Cache = 12 way
+	
+5. With L1 data cache, how many tag bits, index bits, and offset bits? 
+	
+index = log base 2 (set) = log base 2 ((1024 * 128)/64*8) = 8
+	
+	1024B * 128KB = 131072 B
+	8 = associativity  
+	64B = block size
+	
+	offset = log base 2 (64) = 6
+	
+	64B = block size 
+	
+	tag = 64 - 8 - 6 = 50	

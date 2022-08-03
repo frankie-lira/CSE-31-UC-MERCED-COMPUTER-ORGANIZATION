@@ -1,0 +1,73 @@
+Francisco Lira
+CSE 31 Fall 2020
+Lab 09 TPS Questions
+
+
+TPS Activity 1: 
+1. Downloaded
+2. Loaded
+3. Studied
+4. Machine instruction contains 32 bits. 
+5. There are 3 types i, r, and j. 
+* R: add, sub
+* I: addi, li
+* J: j, jal
+
+6. addi $s0, $zero, 25
+   1. This is instruction type I which has 4 feilds: ocode, register source, register target and immediate value. 
+
+   2. The value of the opcode is 0x8. Rs is register $Zero and has a value of 0. Rt is register $S0 and has the value of 16. The immediate is 0x19. 
+
+   3. 0010 0000 0001 0000 0000 0000 0001 1001
+
+0x20100019
+
+7. 0x00400010
+1. The address in Hex is 0x0230402A
+0000 0010 0011 0000 0100 0000 0010 1010
+
+2. The instruction type is R because the opcode (first 6 bits) is 0. There are 6 fields: opcode, rs, rt, rd, shamt, funct.
+
+3. opcode: 0x00
+rs: 0x11 
+rt: 0x10 
+rd: 0x08 
+shamt: 0x0 
+funct: 0x2A
+
+4. The operation is slt, you combine the opcode and the funct binary. 
+opcode, rs, rt, rd, shamt, funct
+
+5. slt $t0, $s1, $s0, it is the same as the source column 
+
+8. bne $t0, $zero, LESS
+   1. I format. It has 4 feilds: ocode, register source, register target and immediate value. 
+
+   2. opcode: 0x05
+rs: 0x08 
+rt: 0x00
+Imm: 0x01
+
+   3. Label: LESS 
+Address: 0x0040001c
+
+   4. No, bne is I format, the address of less has 32 bits and cannot fit.
+
+   5. You count how many lines from calling the jump to the jump. 1, from the line after 
+
+17 to the jump line. 
+   6. 0001 0101 0000 0000 0000 0000 000 0001
+0x15000001
+9. j GREQ
+   1. J format has 2 feilds: opcode and address
+   2. 000010 the value in hex is 0x02
+   3. Label: GREQ
+Address: 0x00400030
+  
+ 4. 32 bits 
+    26 bits 
+
+Remove first 4 bits and last 2 bits from the "Code" because you can only have 26 bits. 0100 0000 0000 0000 0011 00
+   
+5. Combine the opcode & the 20 bits:
+0000 1001 0000 0000 0000 0000 1100

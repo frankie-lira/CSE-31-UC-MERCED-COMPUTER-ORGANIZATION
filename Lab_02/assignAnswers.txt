@@ -1,0 +1,33 @@
+﻿Individual Assignment 1: Segmentation Faults
+1. What line caused the segmentation fault? 
+For my code it was line 15 , when I used the terminal to compile my code, it gave me the following message, 
+
+
+“average.c:15:17: warning: format specifies type 'int *' but the argument has
+      type 'int' [-Wformat]
+    scanf("%d", input);”
+
+
+2. How do you fix the line so it works properly?
+I Changed the line to scanf(“%d”,&input) which corrected the pointer. 
+
+
+3. What is the bug here? 4. How do you fix it?
+You need to pass the sum as called by the value so that the changes made for read_values would not have any impact. In order to reflect the changes, you would have to pass sum as called-by-reference. 
+
+
+Individual Assignment 2: Fix appendTest.c 
+Compile appendTest.c from the assignment page and record your answers to the following questions in assignAnswers.txt while running the program under a section labeled “Assignment 2”: 
+
+
+1. Run the program with the following input: “HELLO!” for str1 and “hello!” for str2. Is the output expected? 
+Yes, the output is expected. 
+
+
+2. Do not stop the program, enter “HI!” for str1 and “hi!” for str2. Is the output expected? What is the bug here? Try to fix the program so it will print the output correctly. 
+The output is not expected, It is giving the previous value which is hello!
+We can fix this by adding, s1[s1len+s2len]='\0'; in the append function right before return s1. 
+
+
+3. Do not stop the program, enter “Hello! How are you?” for str1 and “I am fine, thank you!” for str2. Is the output expected? Why do you think this happens? You do not need to fix this.
+No, and yes, it’s not as expected. It is expected because the code doesn’t read long strings but it is acceptable because the length of the strings is very long.

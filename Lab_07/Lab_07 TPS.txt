@@ -1,0 +1,57 @@
+TPS 1:
+1. What is the difference between the terms: procedure, 
+	function, and method?
+A procedure does not return a value and is a set of 
+	commands. 
+A function returns a value or variable and are defined outside of 
+	classes.  
+A method is defined inside of and is part of a class. 
+
+4. proc1.s asks the CPU to jump to "SUM" in line 20 with the 
+	call "j SUM" in line 12.
+	Line 20 "add $v0, $a0, $a1" adds the values in register 
+	$a1 and $a0 and puts that resulting value in the register 
+	$v0.
+
+5. no, j just jumps to a function and nothing more.
+ 
+6. The return address is supposed to be saved at line 11
+	$ra is used to save the address of the return. 
+	it is 0, which does not make sense because we do dot have address 0. 
+
+7. You get "Error in : invalid program counter value: 0x00000000"
+	It is because the return address is 0.
+
+8. 0x00400020
+
+9. It is not the same. There are now more basic instructions than before. 
+
+10. 0x00400028
+
+	output is 15. 
+
+11. Use operator: jal
+
+TPS 2:
+
+1. 38
+
+2. Issues: we are not saving the return addresses and they are later being called. The return address to the main is overwritten. 
+	Overwriting $s0 and $a0. MIPS is adding another n in sum function. 
+
+3. Why does SUM know where to return to? $a0
+	
+After SUM called SUB, what happens to the address returning to MAIN?
+	It is being overwritten
+	How do you resolve this problem?
+	Store them and use stack pointer.
+	
+4. In live 28 of procs2.s, the value of $a0 is no longer the same as the input argument of SUM.
+	How do you resolve the problem?
+	Store them and use stack pointer.
+
+5. What happens to $s0 in MAIN?
+
+We are replacing it with other values, overwritten and replaced.
+This is a problem because $s0 needs to be stored in the memory to be used in the functions. 
+	
